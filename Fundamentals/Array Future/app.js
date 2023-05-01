@@ -8,40 +8,41 @@ value = numbers.length;
 //indexleme
 value = numbers[0];
 value = numbers[3];
-value = numbers[numbers.length -1];//son elemani alir
+value = numbers[numbers.length - 1]; //son elemani alir
 //herhangi bir indexteki degeri degistirme
-numbers[2]=1000;// burda 76 yerine 1000 gekir
-value =numbers;
+numbers[2] = 1000; // burda 76 yerine 1000 gekir
+value = numbers;
 //index of
-value=numbers.indexof(1000);// burada 1000 bizim 3 deger oluyor
+value = numbers.indexof(1000); // burada 1000 bizim 3 deger oluyor
 //77 arrayin sonuna deger ekleme push
 numbers.push(200);
-value=numbers;
+value = numbers;
 //araryin basina ekleme unschift
 numbers.unshift(200);
-value=numbers
-//sonuna deger atama 
+value = numbers;
+//sonuna deger atama
 numbers.pop(2);
-value=numbers;
+value = numbers;
 //basindan deger atma
 numbers.shift();
-value=numbers;
+value = numbers;
 // belli degerleri atma
-numbers.splice(0,3);
-value =numbers;
+numbers.splice(0, 3);
+value = numbers;
 // elemanlari ters cevirme
 numbers.reverse();
-value=numbers
+value = numbers;
 
-//siralama yaparken ik rakamlara bakarak yapiyor
-value=numbers.sort();
+//siralama yaparken ilk rakamlara bakarak yapiyor
+value = numbers.sort();
 // siralam buyukten kucuge nasil olur.funksion ousturarak yapariz
 
-value=numbers.sort(function(x,y){
-    return x-y;
-})
+value = numbers.sort(function (x, y) {
+  return x - y;
+});
 
-
-
+value = numbers.sort(function (x, y) {
+  return y - x; //buseferde buyukden kucuge siralar
+});
 
 console.log(value);
