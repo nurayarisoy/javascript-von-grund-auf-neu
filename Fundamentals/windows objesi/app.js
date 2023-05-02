@@ -40,4 +40,5 @@ value = window.outerHeight; // dis yukseklik  sayfadaki yukseklil buyutsek
 
 //scrolx ozellik
 value= window.scrollX;// srollx bir cubuk sayfada olusturuyon
+value =window.scrollY;
 console.log(value);
