@@ -1,5 +1,5 @@
 
-const filter = document.getElementById('filter');
+/*const filter = document.getElementById('filter');
 //focus 
 filter.addEventListener('focus',run);
 //blur
@@ -11,7 +11,7 @@ filter.addEventListener('copy',run);
 //cut
 filter.addEventListener('cut',run);
 //select
-filter.addEventListener('select',run)
+filter.addEventListener('select',run)*/
 
 
 
