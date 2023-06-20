@@ -13,9 +13,29 @@ function eventListener() {
   form.addEventListener("submit", addTodo);
 }
 function addTodo(e) {
-  const newTodo = todoInput.value.trim();//trim string deki ile bastaki ve sondaki bosluklari siliyorsun
-  addTodoToUI(newTodo); //dinamik olarak todo elementini ekliyorsun
+  const newTodo = todoInput.value.trim(); //trim string deki ile bastaki ve sondaki bosluklari siliyorsun
+  if (newTodo === "") {
+    // eger bos gelirse alert mesage olusuturur
+    // </div>
+    // <div class="alert alert-danger" role="alert">
+    //{/* This is a danger alert—check it out! */}
+    //{/* </div> */}
+    schowAlert("danger", "please enter todo");
+  } else {
+    addTodoToUI(newTodo); //dinamik olarak todo elementini ekliyorsuninputa birse yazmasakta bos olarak todo olusuyor. bunu engelemek icin
+  }
+
   e.preventDefault();
+}
+function showAlert(type,message){
+const alert = document.createElement('div')
+   alert.className =`alert alert-${type}`;
+   alert.textContent= message;
+   console.log(alert)
+
+
+
+
 }
 function addTodoToUI(newTodo) {
   //string degerine list item olarak UI eklemek
