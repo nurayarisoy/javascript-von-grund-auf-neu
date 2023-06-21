@@ -72,13 +72,22 @@ eventListener();
 
 function eventListener() {
   form.addEventListener("submit", addTodo);
-  document.addEventListener('DOMContentLoaded',loadAllTodosToUI)//burda local storage todo lari Ui da gostermek icin DOMcontentloaded
+  document.addEventListener("DOMContentLoaded", loadAllTodosToUI); //burda local storage todo lari Ui da gostermek icin DOMcontentloaded
+  secondCardBody.addEventListener("click", deleteTodo);//Ui silmek
 }
-function loadAllTodosToUI(){// local storage Ui Cagirdik
+function deleteTodo(e) {//burdada Ui todolari simek cagirdik
+  if (e.target.className === "fa fa-remove") {
+    e.target.parentElement.parentElement.remove();
+    showAlert("success", "todo success delete");
+  }
+}
+
+function loadAllTodosToUI() {
+  // local storage Ui Cagirdik
   let todos = getTodosFromStorage();
-  todos.forEach(function(todo){
+  todos.forEach(function (todo) {
     addTodoToUI(todo);
-  })
+  });
 }
 
 function addTodo(e) {
@@ -92,27 +101,26 @@ function addTodo(e) {
   }
 
   e.preventDefault();
-};
+}
 
-  //storageden butun todolari almis olacak
-  //burda olusturduumuz fonksiyonu heryerde kulanacagiz get from isimlendiriyoruz.
-  function getTodosFromStorage() {
-    let todos;
-    if (localStorage.getItem("todos") === null) {
-      todos = [];
-    } else {
-      todos = JSON.parse(localStorage.getItem("todos"));
-    }
-    return todos;
+//storageden butun todolari almis olacak
+//burda olusturduumuz fonksiyonu heryerde kulanacagiz get from isimlendiriyoruz.
+function getTodosFromStorage() {
+  let todos;
+  if (localStorage.getItem("todos") === null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("todos"));
   }
-  
-  function addTodoToStorage(newTodo) {//burda storage cagirmis olduk
-    let todos = getTodosFromStorage();
-    todos.push(newTodo);
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }  
- 
- 
+  return todos;
+}
+
+function addTodoToStorage(newTodo) {
+  //burda storage cagirmis olduk
+  let todos = getTodosFromStorage();
+  todos.push(newTodo);
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
 
 function showAlert(type, message) {
   const alert = document.createElement("div");
