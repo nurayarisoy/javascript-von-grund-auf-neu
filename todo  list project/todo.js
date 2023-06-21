@@ -73,13 +73,25 @@ eventListener();
 function eventListener() {
   form.addEventListener("submit", addTodo);
   document.addEventListener("DOMContentLoaded", loadAllTodosToUI); //burda local storage todo lari Ui da gostermek icin DOMcontentloaded
-  secondCardBody.addEventListener("click", deleteTodo);//Ui silmek
+  secondCardBody.addEventListener("click", deleteTodo); //Ui silmek
 }
-function deleteTodo(e) {//burdada Ui todolari simek cagirdik
+function deleteTodo(e) {
+  //burdada Ui todolari simek cagirdik
+
   if (e.target.className === "fa fa-remove") {
     e.target.parentElement.parentElement.remove();
+    deleteTodoFromStorage(e.target.parentElement.parentElement.textContent); //todo stosage silme
     showAlert("success", "todo success delete");
   }
+}
+function deleteTodoFromStorage(deletetodo) {
+  let todos = getTodosFromStorage();
+  todos.forEach(function (todo, index) {
+    if (todo === deletetodo) {
+      todos.splice(index, 1); //arayden degeri silebilirsin
+    }
+  });
+  localStorage.setItem("todos", JSON.stringify(todos));
 }
 
 function loadAllTodosToUI() {
