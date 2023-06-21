@@ -72,6 +72,13 @@ eventListener();
 
 function eventListener() {
   form.addEventListener("submit", addTodo);
+  document.addEventListener('DOMContentLoaded',loadAllTodosToUI)//burda local storage todo lari Ui da gostermek icin DOMcontentloaded
+}
+function loadAllTodosToUI(){// local storage Ui Cagirdik
+  let todos = getTodosFromStorage();
+  todos.forEach(function(todo){
+    addTodoToUI(todo);
+  })
 }
 
 function addTodo(e) {
