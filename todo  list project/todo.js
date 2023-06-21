@@ -33,9 +33,6 @@
 //    alert.textContent= message;
 //    console.log(alert)
 
-
-
-
 // }
 // function addTodoToUI(newTodo) {
 //   //string degerine list item olarak UI eklemek
@@ -83,26 +80,45 @@ function addTodo(e) {
     showAlert("danger", "Please enter a todo");
   } else {
     addTodoToUI(newTodo);
-    showAlert("success", "add Todo Success...")
+    addTodoToStorage(newTodo); // burda Ui eklemistik simdi localstorage ekliyoruz buna functinda yaziyoruz
+    showAlert("success", "add Todo Success...");
   }
 
   e.preventDefault();
+};
 
-}
+  //storageden butun todolari almis olacak
+  //burda olusturduumuz fonksiyonu heryerde kulanacagiz get from isimlendiriyoruz.
+  function getTodosFromStorage() {
+    let todos;
+    if (localStorage.getItem("todos") === null) {
+      todos = [];
+    } else {
+      todos = JSON.parse(localStorage.getItem("todos"));
+    }
+    return todos;
+  }
+  
+  function addTodoToStorage(newTodo) {//burda storage cagirmis olduk
+    let todos = getTodosFromStorage();
+    todos.push(newTodo);
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }  
+ 
+ 
 
 function showAlert(type, message) {
-  const alert = document.createElement('div');
+  const alert = document.createElement("div");
   alert.className = `alert alert-${type}`;
   alert.textContent = message;
- // console.log(alert);
-
+  // console.log(alert);
 
   // Append the alert to the first card body
   firstCardBody.appendChild(alert);
   //setTimeout ile  alert message bellibir saniyaden sonra silinecek
-  setTimeout(function(){
+  setTimeout(function () {
     alert.remove();
-  },1000);
+  }, 1000);
 }
 
 function addTodoToUI(newTodo) {
